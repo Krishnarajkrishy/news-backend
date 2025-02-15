@@ -16,7 +16,6 @@ app.use('/user',UserRouter)
 
 
 
-app.listen(3000, 'localhost', () => {
-    console.log('http://localhost:3000 server is started'
-    )
-})
+app.listen(process.env.PORT, process.env.HOST_NAME, () => {
+  console.log("http://localhost:3000 server is started");
+});

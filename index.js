@@ -9,7 +9,14 @@ const app = Express();
 // DB CONNECTION
 connectionDb();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(bodyParser.json())
 
 app.use('/user',UserRouter)
@@ -17,5 +24,8 @@ app.use('/user',UserRouter)
 
 
 app.listen(process.env.PORT, process.env.HOST_NAME, () => {
-  console.log(`http://${process.env.HOST_NAME}server is started`);
+  console.log(
+    `Server is running at http://${process.env.HOST_NAME}:${process.env.PORT}`
+  );
+;
 });
